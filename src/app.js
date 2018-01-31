@@ -2,13 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
+import { firebase } from './firebase/firebase';
+import configureStore from './store/configureStore';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
+import { login } from './actions/auth';
 import LoadingPage from './components/LoadingPage';
 
+const store = configureStore();
 
 const jsx = (
-  <div>Rendered</div>
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
 );
 let hasRendered = false;
 const renderApp = () => {
@@ -24,4 +30,6 @@ document.getElementById('app'));
 
 setTimeout(() => {
   renderApp();
-}, 2000);
+}, 1000);
+renderApp();
+

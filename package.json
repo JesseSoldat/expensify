@@ -1,7 +1,7 @@
 {
   "name": "expensify-jlab",
   "version": "1.0.0",
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "description": "following along with Andrew Mead's React Course",
   "main": "index.js",
   "scripts": {
     "build:dev": "webpack",
