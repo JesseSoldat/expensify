@@ -1,3 +1,4 @@
+import 'react-dates/initialize';
 import React, {Component} from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
