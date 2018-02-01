@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import moment from 'moment';
+import { SingleDatePicker } from 'react-dates';
 
 export default class ExpenseForm extends Component {
   constructor(props) {
@@ -7,21 +8,21 @@ export default class ExpenseForm extends Component {
 
     this.state = {
       description: props.expense ? props.expense.description : '',
-      amount: '',
-      note: '',
-      createAt: moment(),
-      error: ''
+      amount: props.expense ? (props.expense.amount / 100).toString() : '',
+      note: props.expense ? props.expense.note : '',
+      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+      calendarFocused: false,
+      error: '',
     };
   }
 
   onDescriptionChange = (e) => {
     const description = e.target.value;
     this.setState(() => ({description}));
-  }
+  };
 
   onAmountChange = (e) => {
     const amount = e.target.value;
-
     if(!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState(() => ({amount}));
     }
@@ -30,7 +31,17 @@ export default class ExpenseForm extends Component {
   onNoteChange = (e) => {
     const note = e.target.value;
     this.setState(() => ({note}))
-  }
+  };
+
+  onDateChange = (createdAt) => {
+    if(createdAt) {
+      this.setState(() => ({createdAt}));
+    }
+  };
+
+  onFocusChange = ({ focused }) => {
+    this.setState(() => ({calendarFocused: focused}));
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -41,12 +52,12 @@ export default class ExpenseForm extends Component {
       this.props.onSubmit({
         description: this.state.description,
         amount: parseFloat(this.state.amount, 10) * 100,
-        createAt: this.state.createAt.valueOf(),
+        createdAt: this.state.createdAt.valueOf(),
         note: this.state.note,
-        id: Math.floor(Math.random() * 10000)
-      })
+        id: (Math.floor(Math.random() * 10000)).toString()
+      });
     }
-  }
+  };
 
   render() {
     return (
@@ -64,6 +75,14 @@ export default class ExpenseForm extends Component {
           placeholder="Amount"
           value={this.state.amount}
           onChange={this.onAmountChange}
+        />
+        <SingleDatePicker
+          date={this.state.createdAt}
+          onDateChange={this.onDateChange}
+          focused={this.state.calendarFocused}
+          onFocusChange={this.onFocusChange}
+          numberOfMonths={1}
+          isOutsideRange={() => false}
         />
         <textarea cols="30" rows="10"
           placeholder="Add a note for your expense (optional)"
