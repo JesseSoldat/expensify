@@ -2,9 +2,17 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-module.exports = () => {
+if(process.env.NODE_ENV === 'test') {
+
+} else if(process.env.NODE_ENV === 'development') {
+
+}
+
+
+module.exports = (env) => {
+  const isProduction = env === 'production';
   const CSSExtract = new ExtractTextPlugin('styles.css');
 
   return {
@@ -41,7 +49,7 @@ module.exports = () => {
     plugins: [
       CSSExtract
     ],
-    devtool: 'inline-source-map',
+    devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,

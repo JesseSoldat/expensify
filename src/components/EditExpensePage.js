@@ -5,16 +5,16 @@ import { editExpense, removeExpense } from '../actions/expenses';
 
 export class EditExpensePage extends Component {
   onSubmit = (expense) => {
-    this.props.editExpense(this.props.expenses.id, expense);
+    this.props.editExpense(this.props.expense.id, expense);
     this.props.history.push('../dashboard');
   };
 
   onRemove = ()  => {
-    this.props.removeExpense({id: this.props.expenses.id});
+    this.props.removeExpense({id: this.props.expense.id});
     this.props.history.push('../dashboard');  
   };
  
-  render() {
+  render() { 
     return (
       <div>
         <div className="page-header">
