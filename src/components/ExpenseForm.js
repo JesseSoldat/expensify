@@ -6,7 +6,7 @@ import { SingleDatePicker } from 'react-dates';
 export default class ExpenseForm extends Component {
   constructor(props) {
     super(props);
-
+ 
     this.state = {
       description: props.expense ? props.expense.description : '',
       amount: props.expense ? (props.expense.amount / 100).toString() : '',
@@ -77,7 +77,7 @@ export default class ExpenseForm extends Component {
           value={this.state.amount}
           onChange={this.onAmountChange}
         />
-        <SingleDatePicker
+        <SingleDatePicker 
           date={this.state.createdAt}
           onDateChange={this.onDateChange}
           focused={this.state.calendarFocused}

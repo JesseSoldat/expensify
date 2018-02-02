@@ -8,9 +8,9 @@ export class AddExpensePage extends Component {
     this.props.addExpense(expense);
     this.props.history.push('dashboard');
   }
-  
+   
   render() {
-    return (
+    return ( 
       <div>
         <div className="page-header">
           <div className="content-container">
@@ -20,7 +20,7 @@ export class AddExpensePage extends Component {
         <div className="content-container">
           <ExpenseForm onSubmit={this.onSubmit}/>
         </div>
-      </div>
+      </div> 
     );
   }
 }
