@@ -15,13 +15,13 @@ exports[`should render ExpenseListItem correctly 1`] = `
     <span
       className="list-item__sub-title"
     >
-      0
+      January 1st, 1970
     </span>
   </div>
   <h3
     className="list-item__data"
   >
-    195
+    $1.95
   </h3>
 </Link>
 `;
