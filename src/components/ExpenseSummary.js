@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import selectExpenses from '../selectors/expenses';
 
-export const ExpensesSummary = () => {
+export const ExpensesSummary = ({expenseCount}) => {
 
   return (
     <div className="page-header">
       <div className="content-container">
         <h1 className="page-header__title">
-          Viewing
-          <span></span>
+          Viewing <span> {expenseCount} </span>
         </h1>
         <div className="page-header__actions">
           <Link className="button" to="/create">
@@ -20,5 +20,12 @@ export const ExpensesSummary = () => {
     </div>
   );
 };
+const mapStateToProps = (state) => {
+  const visibleExpenses = selectExpenses(state.expenses, state.filters);
 
-export default ExpensesSummary;
+  return {
+    expenseCount: visibleExpenses.length
+  }
+}
+
+export default connect(mapStateToProps)(ExpensesSummary);
