@@ -54,7 +54,7 @@ test('should add expense to database and store', (done) => {
       });
 
       //promise chaining------------snapshot
-      return database.ref(`expenses/${actions[0].expense.id}`).once('value');
+      return database.ref(`test/expenses/${actions[0].expense.id}`).once('value');
 
   })
   .then((snapshot) => {
@@ -83,7 +83,7 @@ test('should add expense with defaults to database and store', (done) => {
       }
     });
 
-    return database.ref(`expenses/${actions[0].expense.id}`).once('value');
+    return database.ref(`test/expenses/${actions[0].expense.id}`).once('value');
 
   })
   .then(snapshot => {

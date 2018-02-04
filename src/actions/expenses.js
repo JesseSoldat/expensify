@@ -1,6 +1,18 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+// console.log(process.env.NODE_ENV);
+let rootDatabase;
+
+if(process.env.NODE_ENV === 'test') {
+  rootDatabase = 'test';
+} else if(process.env.NODE_ENV === 'production') {
+  rootDatabase = 'production';
+} else if (process.env.NODE_ENV === 'development') {
+  rootDatabase = 'development';
+}
+
 export const addExpense = (expense) => ({
   type: 'ADD_EXPENSE',
   expense
@@ -17,7 +29,7 @@ export const startAddExpense = (expenseData = {}) => {
     } = expenseData;
     const expense = { description, note, amount, createdAt };
 
-    return database.ref(`expenses`).push(expense)
+    return database.ref(`${rootDatabase}/expenses`).push(expense)
       .then(ref => {
         dispatch(addExpense({
           id: ref.key,

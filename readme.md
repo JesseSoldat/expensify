@@ -4,3 +4,4 @@ git remote (adds a heroku remote when running heroku create)
 git push heroku master
 heroku open
 heroku logs
+heroku config (view env variables)
