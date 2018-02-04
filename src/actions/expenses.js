@@ -7,9 +7,12 @@ if(process.env.NODE_ENV === 'test') {
   rootDatabase = 'test';
 } else if(process.env.NODE_ENV === 'production') {
   rootDatabase = 'production';
-} else if (process.env.NODE_ENV === 'development') {
+} else {
+  process.env.NODE_ENV = 'development'
   rootDatabase = 'development';
 }
+
+
 //ADD----------------------------------
 export const addExpense = (expense) => ({
   type: 'ADD_EXPENSE',

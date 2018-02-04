@@ -1,35 +1,37 @@
 import moment from 'moment';
 
-const expensesReducerDefaultState = [
-  {
-    description: 'Internet', 
-    id: '42432342343', 
-    amount: 43545,
-    note: 'February true move payment',
-    createdAt:  moment().subtract(4, 'days').valueOf()
-  },
-  {
-    description: 'Car Payments',
-    id: '477772342343',
-    amount: 773545,
-    note: 'February car payment',    
-    createdAt: moment().add(7, 'days').valueOf()
-  },
-  {
-    description: 'Groceries', 
-    id: '324324342343', 
-    amount: 56543,
-    note: 'February groceries',    
-    createdAt:  moment().add(14, 'days').valueOf()
-  },
-  {
-    description: 'Electric',
-    id: '424323fds2343',
-    amount: 1544545,
-    note: 'February electricty payment',    
-    createdAt:  moment().add(4, 'days').valueOf()
-  }
-];
+// const expensesReducerDefaultState = [
+//   {
+//     description: 'Internet', 
+//     id: '42432342343', 
+//     amount: 43545,
+//     note: 'February true move payment',
+//     createdAt:  moment().subtract(4, 'days').valueOf()
+//   },
+//   {
+//     description: 'Car Payments',
+//     id: '477772342343',
+//     amount: 773545,
+//     note: 'February car payment',    
+//     createdAt: moment().add(7, 'days').valueOf()
+//   },
+//   {
+//     description: 'Groceries', 
+//     id: '324324342343', 
+//     amount: 56543,
+//     note: 'February groceries',    
+//     createdAt:  moment().add(14, 'days').valueOf()
+//   },
+//   {
+//     description: 'Electric',
+//     id: '424323fds2343',
+//     amount: 1544545,
+//     note: 'February electricty payment',    
+//     createdAt:  moment().add(4, 'days').valueOf()
+//   }
+// ];
+
+const expensesReducerDefaultState = [];
 
 export default (state = expensesReducerDefaultState, action) => {
   switch(action.type) {

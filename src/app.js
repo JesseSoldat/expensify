@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
 import { firebase } from './firebase/firebase';
 import configureStore from './store/configureStore';
+import { startSetExpenses } from './actions/expenses';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
@@ -31,8 +32,7 @@ const renderApp = () => {
 ReactDOM.render(<LoadingPage />,
 document.getElementById('app'));
 
-setTimeout(() => {
+store.dispatch(startSetExpenses()).then(() => {
   renderApp();
-}, 1000);
-renderApp();
+});
 
