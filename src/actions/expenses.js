@@ -2,7 +2,7 @@ import uuid from 'uuid';
 import database from '../firebase/firebase';
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-// console.log(process.env.NODE_ENV);
+
 let rootDatabase;
 
 if(process.env.NODE_ENV === 'test') {
