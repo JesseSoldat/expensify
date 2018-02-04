@@ -1,8 +1,6 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
 let rootDatabase;
 
 if(process.env.NODE_ENV === 'test') {
